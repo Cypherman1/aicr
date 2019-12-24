@@ -1,0 +1,14 @@
+{
+  "name": "sdsrv-aicr",
+  "version": "1.0.0",
+  "description": "Powerful character recognize solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SDSRV",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
