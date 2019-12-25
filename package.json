@@ -12,6 +12,7 @@
   "author": "SDSRV",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/pro-layout": "^4.10.1",
     "body-parser": "^1.19.0",
     "cookie-session": "^1.3.3",
     "express": "^4.17.1",

@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import "../assets/css/main.css";
 
-const Dashboard = () => {
-  return <h2> Dashboard </h2>;
+import logo from "../assets/imgs/brightics_logo.png";
+import aicr from "../assets/imgs/aicr.png";
+
+const Home = () => {
+  return <h2> Home </h2>;
 };
 
-const Meseros = () => {
-  return <h2> Meseros </h2>;
+const Editor = () => {
+  return <h2> AICR Editor </h2>;
 };
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -39,17 +42,24 @@ class App extends Component {
             width="160"
             theme="light"
           >
-            <div className="logo" />
-            <Menu theme="light" defaultSelectedKeys={["1"]} mode="inline">
+            <div className="logo">
+              <img src={logo} alt="logo" />
+              <img
+                className={this.state.collapsed ? "nodisplay" : "aicr-text"}
+                src={aicr}
+                alt="aicr"
+              />
+            </div>
+            <Menu defaultSelectedKeys={["1"]} mode="inline">
               <Menu.Item key="1">
                 <Icon type="pie-chart" />
-                <span>Dashboard</span>
+                <span>Home</span>
                 <Link to="/" />
               </Menu.Item>
               <Menu.Item key="2">
                 <Icon type="desktop" />
-                <span>Meseros</span>
-                <Link to="/meseros" />
+                <span>AICR Editor</span>
+                <Link to="/editor" />
               </Menu.Item>
             </Menu>
           </Sider>
@@ -72,11 +82,11 @@ class App extends Component {
                 minHeight: 280
               }}
             >
-              <Route exact path="/" component={Dashboard} />
-              <Route path="/meseros" component={Meseros} />
+              <Route exact path="/" component={Home} />
+              <Route path="/editor" component={Editor} />
             </Content>
             <Footer style={{ textAlign: "center" }}>
-              Ant Design ©2016 Created by Ant UED
+              Brightics AICR ©2019 Created by SDSRV
             </Footer>
           </Layout>
         </Layout>

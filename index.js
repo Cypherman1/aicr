@@ -1,10 +1,12 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
+const passport = require("passport");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-
 const keys = require("./config/keys");
+//require("./services/passport");
+
+const app = express();
 
 app.use(bodyParser.json());
 app.use(
@@ -13,6 +15,11 @@ app.use(
     keys: [keys.cookieKey]
   })
 );
+
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// require("./routes/authRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets
