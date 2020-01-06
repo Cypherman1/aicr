@@ -9,9 +9,6 @@ import ImageEditor from "./ImageEditor";
 import Landing from "./Landing";
 import "../assets/css/main.css";
 
-import logo from "../assets/imgs/brightics_logo.png";
-import aicr from "../assets/imgs/aicr.png";
-
 const { Content, Footer, Sider } = Layout;
 
 class App extends Component {
@@ -24,46 +21,32 @@ class App extends Component {
     return (
       <Router>
         <Layout style={{ minHeight: "100vh" }}>
-          <Sider
-            collapsible
-            collapsed={common.sider_collapsed}
-            onCollapse={setSiderCollapsed}
-            width="160"
-            theme="light"
-            breakpoint="sm"
-          >
-            <div className="logo">
-              <img src={logo} alt="logo" />
-              <img
-                className={common.sider_collapsed ? "nodisplay" : "aicr-text"}
-                src={aicr}
-                alt="aicr"
-              />
-            </div>
-            <Menu defaultSelectedKeys={["1"]} mode="inline">
-              <Menu.Item key="1">
-                <Icon type="home" />
-                <span>Home</span>
-                <Link to="/" />
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="solution" />
-                <span>AICR Editor</span>
-                <Link to="/ocreditor" />
-              </Menu.Item>
-              <Menu.Item key="3">
-                <Icon type="file-image" />
-                <span>Image Editor</span>
-                <Link to="/imgeditor" />
-              </Menu.Item>
-            </Menu>
-          </Sider>
+          <AppHeader />
+
           <Layout>
-            <AppHeader />
+            <Sider collapsed theme="light" collapsedWidth={50}>
+              <Menu defaultSelectedKeys={["1"]} mode="inline">
+                <Menu.Item key="1">
+                  <Icon type="home" />
+                  <span>Home</span>
+                  <Link to="/" />
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Icon type="solution" />
+                  <span>AICR Editor</span>
+                  <Link to="/ocreditor" />
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Icon type="file-image" />
+                  <span>Image Editor</span>
+                  <Link to="/imgeditor" />
+                </Menu.Item>
+              </Menu>
+            </Sider>
             <Content
               style={{
-                margin: "5px 5px",
-                padding: 24,
+                margin: "5px 5px 0 5px",
+                padding: 2,
                 background: "#fff",
                 minHeight: 280
               }}
@@ -72,10 +55,10 @@ class App extends Component {
               <Route path="/ocreditor" component={AICREditor} />
               <Route path="/imgeditor" component={ImageEditor} />
             </Content>
-            <Footer style={{ textAlign: "center" }}>
-              Brightics AICR ©2019 Created by SDSRV
-            </Footer>
           </Layout>
+          <Footer style={{ textAlign: "center" }}>
+            Brightics AICR ©2019 Created by SDSRV
+          </Footer>
         </Layout>
       </Router>
     );

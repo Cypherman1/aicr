@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Layout, Icon, Avatar } from "antd";
 import * as actions from "../actions";
+import logo from "../assets/imgs/brightics_logo.png";
+import aicr from "../assets/imgs/aicr.png";
 const { Header } = Layout;
 
 class AppHeader extends Component {
@@ -32,17 +34,15 @@ class AppHeader extends Component {
         style={{
           background: "#101b58",
           padding: 0,
-          paddingLeft: 16,
-          paddingRight: 16
+          paddingLeft: 10,
+          paddingRight: 14
         }}
       >
-        <Icon
-          className="trigger"
-          type={common.sider_collapsed ? "menu-unfold" : "menu-fold"}
-          style={{ cursor: "pointer", color: "white" }}
-          onClick={toggleSider}
-        />
-        {this.renderContent()}
+        <div className="logo">
+          <img src={logo} alt="logo" />
+          <img className="aicr-text" src={aicr} alt="aicr" />
+          {this.renderContent()}
+        </div>
       </Header>
     );
   }
