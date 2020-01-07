@@ -1,44 +1,41 @@
 import React from "react";
-import ResizePanel from "react-resize-panel";
+import { ReflexContainer, ReflexSplitter, ReflexElement } from "react-reflex";
 
-const ComponentA = () => {
-  return <div> abc </div>;
-};
-
-const ComponentB = () => {
-  return <div style={{ width: "200", backgroundColor: "red" }}> BCD </div>;
-};
-
-// const Landing = () => {
-//   return [<CompA />, <CompB />];
-// };
+import "react-reflex/styles.css";
 
 const Landing = () => {
-  return [
-    <div className="container">
-      <div className="body">
-        <ResizePanel direction="e">
-          <div className="sidebar panel">
-            left panel
-            <br /> with margin
-          </div>
-        </ResizePanel>
-        <div className="content panel">content</div>
-        <ResizePanel direction="w">
-          <div className="content panel">
-            right panel
-            <br /> with custom handle
-          </div>
-        </ResizePanel>
-      </div>
-
-      <ResizePanel direction="n">
-        <div className="footer panel">
-          <span>footer</span>
+  return (
+    <ReflexContainer orientation="vertical">
+      <ReflexElement className="left-pane">
+        <div className="pane-content">
+          <label>Left Pane (resizable)</label>
         </div>
-      </ResizePanel>
-    </div>
-  ];
+      </ReflexElement>
+
+      <ReflexSplitter propagate={true} />
+
+      <ReflexElement className="middle-pane" minSize="200" maxSize="800">
+        <div className="pane-content">
+          <label>
+            Middle Pane (resizable)
+            <br />
+            <br />
+            minSize = 200px
+            <br />
+            maxSize = 400px
+          </label>
+        </div>
+      </ReflexElement>
+
+      <ReflexSplitter propagate={true} />
+
+      <ReflexElement className="right-pane">
+        <div className="pane-content">
+          <label>Right Pane (resizable)</label>
+        </div>
+      </ReflexElement>
+    </ReflexContainer>
+  );
 };
 
 export default Landing;
