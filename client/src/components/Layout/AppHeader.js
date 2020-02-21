@@ -2,14 +2,16 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { Layout, Icon, Avatar } from "antd";
-import * as actions from "../actions";
-import logo from "../assets/imgs/brightics_logo.png";
-import aicr from "../assets/imgs/aicr.png";
+import * as actions from "../../actions";
+import logo from "../../assets/imgs/brightics_logo.png";
+import aicr from "../../assets/imgs/aicr.png";
+import "./Layout.scss";
+
 const { Header } = Layout;
 
 class AppHeader extends Component {
-  renderContent = () => {
-    switch (this.props.auth) {
+  renderContent = auth => {
+    switch (auth) {
       case false:
         return (
           <div style={{ float: "right" }}>
@@ -21,14 +23,14 @@ class AppHeader extends Component {
       default:
         return (
           <div style={{ float: "right" }}>
-            <Avatar style={{ marginRight: 5 }} icon="user" />
+            <Avatar style={{ marginRight: 5 }} src={auth.avatar} />
             <a href="/api/logout"> logout </a>
           </div>
         );
     }
   };
   render() {
-    const { common, toggleSider } = this.props;
+    const { common, toggleSider, auth } = this.props;
     return (
       <Header
         style={{
@@ -41,7 +43,7 @@ class AppHeader extends Component {
         <div className="logo">
           <img src={logo} alt="logo" />
           <img className="aicr-text" src={aicr} alt="aicr" />
-          {this.renderContent()}
+          {this.renderContent(auth)}
         </div>
       </Header>
     );

@@ -1,40 +1,30 @@
 import React from "react";
-import { ReflexContainer, ReflexSplitter, ReflexElement } from "react-reflex";
-
-import "react-reflex/styles.css";
+import { Grid, Row, Col } from "react-flexbox-grid";
+import { Card } from "antd";
+import Explorer from "./explorer/Explorer";
 
 const Landing = () => {
   return (
-    <ReflexContainer orientation="vertical">
-      <ReflexElement className="left-pane">
-        <div className="pane-content">
-          <label>Left Pane (resizable)</label>
-        </div>
-      </ReflexElement>
+    <Grid style={{ width: "100%" }}>
+      <Row style={{ height: "100%" }}>
+        <Col
+          xs={12}
+          sm={2}
+          md={2}
+          lg={3}
+          style={{ paddingLeft: 0, height: "100%" }}
+        >
+          <Explorer />
+        </Col>
 
-      <ReflexSplitter propagate={true} />
-
-      <ReflexElement className="middle-pane" minSize="200" maxSize="800">
-        <div className="pane-content">
-          <label>
-            Middle Pane (resizable)
-            <br />
-            <br />
-            minSize = 200px
-            <br />
-            maxSize = 400px
-          </label>
-        </div>
-      </ReflexElement>
-
-      <ReflexSplitter propagate={true} />
-
-      <ReflexElement className="right-pane">
-        <div className="pane-content">
-          <label>Right Pane (resizable)</label>
-        </div>
-      </ReflexElement>
-    </ReflexContainer>
+        <Col xs={12} sm={6} md={6} lg={6}>
+          <Explorer />
+        </Col>
+        <Col xs={12} sm={3} md={3} lg={3}>
+          <Explorer />
+        </Col>
+      </Row>
+    </Grid>
   );
 };
 

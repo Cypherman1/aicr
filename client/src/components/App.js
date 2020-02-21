@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import AppHeader from "./AppHeader";
+import AppHeader from "../components/Layout/AppHeader";
+import AppSideBar from "../components/Layout/AppSideBar";
+import AppFooter from "../components/Layout/AppFooter";
 import AICREditor from "./AICREditor";
 import ImageEditor from "./ImageEditor";
 import Landing from "./Landing";
@@ -22,32 +24,12 @@ class App extends Component {
       <Router>
         <Layout style={{ minHeight: "100vh" }}>
           <AppHeader />
-
           <Layout>
-            <Sider collapsed theme="light" collapsedWidth={50}>
-              <Menu defaultSelectedKeys={["1"]} mode="inline">
-                <Menu.Item key="1">
-                  <Icon type="home" />
-                  <span>Home</span>
-                  <Link to="/" />
-                </Menu.Item>
-                <Menu.Item key="2">
-                  <Icon type="solution" />
-                  <span>AICR Editor</span>
-                  <Link to="/ocreditor" />
-                </Menu.Item>
-                <Menu.Item key="3">
-                  <Icon type="file-image" />
-                  <span>Image Editor</span>
-                  <Link to="/imgeditor" />
-                </Menu.Item>
-              </Menu>
-            </Sider>
+            <AppSideBar />
             <Content
               style={{
-                margin: "5px 5px 0 5px",
-                padding: 2,
-                background: "#fff",
+                padding: "0",
+                background: "#C0C0C0",
                 minHeight: 280
               }}
             >
@@ -56,9 +38,7 @@ class App extends Component {
               <Route path="/imgeditor" component={ImageEditor} />
             </Content>
           </Layout>
-          <Footer style={{ textAlign: "center" }}>
-            Brightics AICR ©2019 Created by SDSRV
-          </Footer>
+          <AppFooter />
         </Layout>
       </Router>
     );
